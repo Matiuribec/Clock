@@ -1,26 +1,20 @@
-import React from "react";
+import React from "react"
+import { useEffect, useState } from "react";
+import Clock from "./Clock.jsx";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
 
-//create your first component
 const Home = () => {
-	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
-};
+	const [time, setSeconds] = useState(0)	
+	
+	useEffect(()=>{
 
+		let interval = setInterval(()=> setSeconds(time + 1),1000)
+		return () => clearInterval(interval)
+
+		
+})
+return <Clock seconds={time} />
+
+
+}
 export default Home;
